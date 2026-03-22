@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources — virinchi.dev</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #080808;
+            --card: #111;
+            --card2: #161616;
+            --border: rgba(255, 255, 255, 0.07);
+            --lime: #c8f135;
+            --pink: #ff3cac;
+            --cyan: #00f5d4;
+            --white: #f0f0f0;
+            --muted: #666;
+            --muted2: #444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--white);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--muted2);
+            border-radius: 2px
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            padding: 18px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(24px);
+            background: rgba(8, 8, 8, 0.85);
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .logo span {
+            color: var(--lime);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-back {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-back:hover {
+            color: var(--white);
+        }
+
+        .page-hero {
+            padding: 120px 48px 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .label {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--lime);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .page-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(36px, 6vw, 72px);
+            font-weight: 800;
+            letter-spacing: -3px;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .page-sub {
+            font-size: 16px;
+            color: var(--muted);
+            line-height: 1.7;
+            font-weight: 300;
+            max-width: 540px;
+        }
+
+        .section {
+            padding: 60px 48px;
+        }
+
+        .inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .sec-label {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--lime);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .sec-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 6px;
+        }
+
+        .sec-sub {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 24px;
+            font-weight: 300;
+        }
+
+        /* SETUP CARDS */
+        .setup-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .setup-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .setup-header {
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .setup-header:hover {
+            background: var(--card2);
+        }
+
+        .setup-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .si-lime {
+            background: rgba(200, 241, 53, 0.1);
+        }
+
+        .si-pink {
+            background: rgba(255, 60, 172, 0.1);
+        }
+
+        .si-cyan {
+            background: rgba(0, 245, 212, 0.1);
+        }
+
+        .si-purple {
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        .si-blue {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .setup-info {
+            flex: 1;
+        }
+
+        .setup-name {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 3px;
+        }
+
+        .setup-desc {
+            font-size: 13px;
+            color: var(--muted);
+            font-weight: 300;
+        }
+
+        .setup-badge {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 100px;
+            font-weight: 600;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        .sb-recommended {
+            background: rgba(200, 241, 53, 0.12);
+            color: var(--lime);
+        }
+
+        .sb-beginner {
+            background: rgba(0, 245, 212, 0.12);
+            color: var(--cyan);
+        }
+
+        .sb-free {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--muted);
+        }
+
+        .setup-chevron {
+            color: var(--muted);
+            font-size: 14px;
+            margin-left: 12px;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .setup-card.open .setup-chevron {
+            transform: rotate(180deg);
+        }
+
+        .setup-body {
+            display: none;
+            padding: 0 24px 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .setup-card.open .setup-body {
+            display: block;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .step-item:last-child {
+            border-bottom: none;
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .sn-lime {
+            background: rgba(200, 241, 53, 0.12);
+            color: var(--lime);
+        }
+
+        .sn-pink {
+            background: rgba(255, 60, 172, 0.12);
+            color: var(--pink);
+        }
+
+        .sn-cyan {
+            background: rgba(0, 245, 212, 0.12);
+            color: var(--cyan);
+        }
+
+        .sn-purple {
+            background: rgba(139, 92, 246, 0.12);
+            color: #a78bfa;
+        }
+
+        .sn-blue {
+            background: rgba(59, 130, 246, 0.12);
+            color: #60a5fa;
+        }
+
+        .step-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .step-desc {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .step-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            background: rgba(200, 241, 53, 0.08);
+            border: 1px solid rgba(200, 241, 53, 0.2);
+            color: var(--lime);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 100px;
+            transition: background 0.2s;
+        }
+
+        .step-link:hover {
+            background: rgba(200, 241, 53, 0.15);
+        }
+
+        .step-link.pink {
+            background: rgba(255, 60, 172, 0.08);
+            border-color: rgba(255, 60, 172, 0.2);
+            color: var(--pink);
+        }
+
+        .step-link.pink:hover {
+            background: rgba(255, 60, 172, 0.15);
+        }
+
+        .step-link.cyan {
+            background: rgba(0, 245, 212, 0.08);
+            border-color: rgba(0, 245, 212, 0.2);
+            color: var(--cyan);
+        }
+
+        .step-link.cyan:hover {
+            background: rgba(0, 245, 212, 0.15);
+        }
+
+        .step-link.purple {
+            background: rgba(139, 92, 246, 0.08);
+            border-color: rgba(139, 92, 246, 0.2);
+            color: #a78bfa;
+        }
+
+        .step-link.blue {
+            background: rgba(59, 130, 246, 0.08);
+            border-color: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+
+        .tip-box {
+            background: rgba(200, 241, 53, 0.05);
+            border: 1px solid rgba(200, 241, 53, 0.12);
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .tip-box strong {
+            color: var(--lime);
+        }
+
+        /* TOOLS GRID */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .tool-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px 18px;
+            transition: border-color 0.2s, background 0.2s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .tool-card:hover {
+            border-color: rgba(255, 255, 255, 0.14);
+            background: var(--card2);
+        }
+
+        .tool-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .tool-desc {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5;
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+
+        .tool-tag {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 100px;
+            font-weight: 600;
+        }
+
+        .tt-free {
+            background: rgba(200, 241, 53, 0.1);
+            color: var(--lime);
+        }
+
+        .tt-freemium {
+            background: rgba(0, 245, 212, 0.1);
+            color: var(--cyan);
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0 48px;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .footer-logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 15px;
+            color: var(--white);
+        }
+
+        .footer-logo span {
+            color: var(--lime);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.on {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media(max-width:768px) {
+            nav {
+                padding: 16px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .page-hero,
+            .section {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            footer {
+                padding: 20px;
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+
+            .divider {
+                margin: 0 20px;
+            }
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@800&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            text-decoration: none;
+            color: #f0f0f0;
+            line-height: 1;
+        }
+
+        .logo-bracket {
+            color: #c8f135;
+        }
+
+        .logo-slash {
+            color: #ff3cac;
+        }
+
+        .logo-dev {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            color: #c8f135;
+            margin-left: 3px;
+            letter-spacing: -0.5px;
+        }
+
+        * {
+            cursor: none;
+        }
+
+        .cursor {
+            width: 10px;
+            height: 10px;
+            background: #c8f135;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-ring {
+            width: 34px;
+            height: 34px;
+            border: 1.5px solid #c8f135;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.5;
+            mix-blend-mode: difference;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <nav>
+        <div class="logo">
+            <span class="logo-bracket">&lt;</span>V<span class="logo-slash">/</span><span
+                class="logo-bracket">&gt;</span><span class="logo-dev">.dev</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#what">Vibecoding</a></li>
+            <li><a href="index.html#paths">Paths</a></li>
+            <li><a href="index.html#topics">Topics</a></li>
+            <li><a href="resources.html" style="color:var(--white)">Resources</a></li>
+        </ul>
+        <a href="index.html" class="nav-back">← Back to home</a>
+    </nav>
+
+    <!-- HERO -->
+    <div class="page-hero">
+        <p class="label">resources</p>
+        <h1 class="page-title">Everything you<br>need to start.</h1>
+        <p class="page-sub">Free tools, step-by-step setup guides, and everything a vibecoder needs — all in one place.
+            Zero cost.</p>
+    </div>
+
+    <!-- GET STARTED SETUP -->
+    <section class="section" id="setup">
+        <div class="inner reveal">
+            <p class="sec-label">start here</p>
+            <h2 class="sec-title">Set up your vibecoding environment</h2>
+            <p class="sec-sub">Install these tools and you're ready to build anything. Click each card to see the setup
+                guide.</p>
+
+            <div class="setup-grid">
+
+                <!-- CLAUDE -->
+                <div class="setup-card" id="card-claude">
+                    <div class="setup-header" onclick="toggleCard('claude')">
+                        <div class="setup-icon si-lime">🤖</div>
+                        <div class="setup-info">
+                            <p class="setup-name">Claude — AI by Anthropic</p>
+                            <p class="setup-desc">The best AI for vibecoding. Understands context deeply, writes clean
+                                code, explains everything.</p>
+                        </div>
+                        <span class="setup-badge sb-recommended">Recommended</span>
+                        <span class="setup-chevron">▼</span>
+                    </div>
+                    <div class="setup-body">
+                        <div class="steps">
+                            <div class="step-item">
+                                <div class="step-num sn-lime">1</div>
+                                <div class="step-content">
+                                    <p class="step-title">Go to claude.ai</p>
+                                    <p class="step-desc">Open your browser and go to claude.ai. You can use Claude
+                                        directly in the browser — no download needed for the web version.</p>
+                                    <a href="https://claude.ai" target="_blank" class="step-link">Open claude.ai ↗</a>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num sn-lime">2</div>
+                                <div class="step-content">
+                                    <p class="step-title">Create a free account</p>
+                                    <p class="step-desc">Sign up with your Google account or email. The free plan gives
+                                        you plenty of messages to learn and build with.</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num sn-lime">3</div>
+                                <div class="step-content">
+                                    <p class="step-title">Download Claude desktop app (optional)</p>
+                                    <p class="step-desc">For a better experience, download the Claude desktop app. Works
+                                        on Windows and Mac. Faster, cleaner, and you can use it alongside your code
+                                        editor.</p>
+                                    <a href="https://claude.ai/download" target="_blank" class="step-link">Download
+                                        Claude app ↗</a>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num sn-lime">4</div>
+                                <div class="step-content">
+                                    <p class="step-title">Start vibecoding</p>
+                                    <p class="step-desc">Type exactly what you want to build. Be specific — the more
+                                        detail you give, the better the code Claude writes for you.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tip-box">
+                            <strong>Pro tip:</strong> Start your prompt with "Build me a..." and describe exactly what
+                            you want — the design, the features, the colors. Claude understands plain language
+                            perfectly.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ANTIGRAVITY -->
+                <div class="setup-card" id="card-antigravity">
+                    <div class="setup-header" onclick="toggleCard('antigravity')">
+                        <div class="setup-icon si-pink">⚡</div>
+                        <div class="setup-info">
+                            <p class="setup-name">Antigravity — AI Code Editor</p>
+                            <p class="setup-desc">A code editor built for vibecoding. Paste AI-generated code here,
+                                preview it live, edit and ship.</p>
+                        </div>
+                        <span class="setup-badge sb-recommended">Recommended</span>
+                        <span class="setup-chevron">▼</span>
+                    </div>
+                    <div class="setup-body">
+                        <div class="steps">
+                            <div class="step-item">
+                                <div class="step-num sn-pink">1</div>
+                                <div class="step-content">
+                                    <p class="step-title">Download Antigravity</p>
+                                    <p class="step-desc">Go to the Antigravity website and download the app for your OS
+                                        — Windows or Mac. It's free.</p>
+                                    <a href="https://antigravity.dev" target="_blank" class="step-link pink">Download
+                                        Antigravity ↗</a>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num sn-pink">2</div>
+                                <div class="step-content">
+                                    <p class="step-title">Install and open it</p>
+                                    <p class="step-desc">Run the installer. Once open you'll see a clean editor. Create
+                                        a new folder for your project from File → New Project.</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num sn-pink">3</div>
+                                <div class="step-content">
+                                    <p class="step-title">Create your first file</p>
+                                    <p class="step-desc">Right click in the file panel → New File → name it index.html.
+                                        This is where your code goes.</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num sn-pink">4</div>
+                                <div class="step-content">
+                                    <p class="step-title">Paste code from Claude and preview</p>
+                                    <p class="step-desc">Copy code from Claude → paste in Antigravity → click the
+                                        preview button to see it live in the browser instantly.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tip-box">
+                            <strong>Pro tip:</strong> Use Claude to write the code and Antigravity to run and edit it.
+                            These two tools together are your complete vibecoding setup.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LOVABLE -->
+                <div class="setup-card" id="card-lovable">
+                    <div class="setup-header" onclick="toggleCard('lovable')">
+                        <div class="setup-icon si-cyan">💜</div>
+                        <div class="setup-info">
+                            <p class="setup-name">Lovable — Just describe, it builds</p>
+                            <p class="setup-desc">Want to try vibecoding without any setup? Lovable builds full apps
+                                just from your description. No code editor needed.</p>
+                        </div>
+                        <span class="setup-badge sb-beginner">Best for beginners</span>
+                        <span class="setup-chevron">▼</span>
+                    </div>
+                    <div class="setup-body">
+                        <div class="steps">
+                            <div class="step-item">
+                                <div class="step-num sn-cyan">1</div>
+                                <div class="step-content">
+                                    <p class="step-title">Go to lovable.dev</p>
+                                    <p class="step-desc">No download needed. Lovable runs fully in the browser. Just
+                                        open the website and sign up free.</p>
+                                    <a href="https://lovable.dev" target="_blank" class="step-link cyan">Open Lovable
+                                        ↗</a>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num sn-cyan">2</div>
+                                <div class="step-content">
+                                    <p class="step-title">Describe what you want to build</p>
+                                    <p class="step-desc">Type something like "Build me a personal portfolio website with
+                                        dark theme and a projects section". Lovable builds it instantly — full app, live
+                                        preview.</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num sn-cyan">3</div>
+                                <div class="step-content">
+                                    <p class="step-title">Edit by chatting</p>
+                                    <p class="step-desc">Don't like something? Just type "change the color to lime
+                                        green" or "add a contact form". It updates live. No code knowledge needed at
+                                        all.</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num sn-cyan">4</div>
+                                <div class="step-content">
+                                    <p class="step-title">Deploy with one click</p>
+                                    <p class="step-desc">Once happy with your project, click Deploy. Lovable hosts it
+                                        for you and gives you a real URL to share. Free on the starter plan.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tip-box">
+                            <strong>When to use Lovable:</strong> Perfect for quickly trying out an idea or building
+                            something fast without any setup. When you want more control and to actually learn — switch
+                            to Claude + Antigravity.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLACKBOX AI -->
+                <div class="setup-card" id="card-blackbox">
+                    <div class="setup-header" onclick="toggleCard('blackbox')">
+                        <div class="setup-icon si-purple">🖤</div>
+                        <div class="setup-info">
+                            <p class="setup-name">Blackbox AI — AI inside your editor</p>
+                            <p class="setup-desc">A VS Code extension that brings AI directly into your code editor.
+                                Autocomplete, explain code, fix bugs — all inside the editor.</p>
+                        </div>
+                        <span class="setup-badge sb-free">Free</span>
+                        <span class="setup-chevron">▼</span>
+                    </div>
+                    <div class="setup-body">
+                        <div class="steps">
+                            <div class="step-item">
+                                <div class="step-num sn-purple">1</div>
+                                <div class="step-content">
+                                    <p class="step-title">Install VS Code first</p>
+                                    <p class="step-desc">Blackbox AI works as a VS Code extension. Download VS Code free
+                                        if you don't have it.</p>
+                                    <a href="https://code.visualstudio.com" target="_blank"
+                                        class="step-link purple">Download VS Code ↗</a>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num sn-purple">2</div>
+                                <div class="step-content">
+                                    <p class="step-title">Install Blackbox AI extension</p>
+                                    <p class="step-desc">Open VS Code → press Ctrl+Shift+X → search "Blackbox AI" →
+                                        click Install. Done in 30 seconds.</p>
+                                    <a href="https://www.blackbox.ai" target="_blank" class="step-link purple">Visit
+                                        Blackbox AI ↗</a>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num sn-purple">3</div>
+                                <div class="step-content">
+                                    <p class="step-title">Start coding with AI help</p>
+                                    <p class="step-desc">As you type code, Blackbox suggests completions automatically.
+                                        You can also select any code and ask it to explain or fix it.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tip-box">
+                            <strong>When to use Blackbox:</strong> Great when you're writing code yourself and want AI
+                            suggestions inline. Works best alongside Claude for the full vibecoding experience.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- FREE TOOLS -->
+    <section class="section">
+        <div class="inner reveal">
+            <p class="sec-label">free tools</p>
+            <h2 class="sec-title">More tools for vibecoders</h2>
+            <p class="sec-sub">Everything below is free. These are the actual tools used to build real projects.</p>
+
+            <br>
+            <p class="sec-label" style="margin-bottom:12px;">AI coding tools</p>
+            <div class="tools-grid">
+                <a href="https://cursor.sh" target="_blank" class="tool-card">
+                    <p class="tool-name">Cursor</p>
+                    <p class="tool-desc">AI-first code editor. Like VS Code but with AI built into every feature.</p>
+                    <span class="tool-tag tt-freemium">Freemium</span>
+                </a>
+                <a href="https://v0.dev" target="_blank" class="tool-card">
+                    <p class="tool-name">v0 by Vercel</p>
+                    <p class="tool-desc">Describe a UI component and it generates production-ready React code instantly.
+                    </p>
+                    <span class="tool-tag tt-freemium">Freemium</span>
+                </a>
+                <a href="https://bolt.new" target="_blank" class="tool-card">
+                    <p class="tool-name">Bolt.new</p>
+                    <p class="tool-desc">Full stack app builder in the browser. Describe your app and it builds and
+                        deploys it.</p>
+                    <span class="tool-tag tt-freemium">Freemium</span>
+                </a>
+            </div>
+
+            <br><br>
+            <p class="sec-label" style="margin-bottom:12px;">Free hosting</p>
+            <div class="tools-grid">
+                <a href="https://vercel.com" target="_blank" class="tool-card">
+                    <p class="tool-name">Vercel</p>
+                    <p class="tool-desc">Best free hosting for HTML, CSS, JS projects. Deploy in one click from GitHub.
+                    </p>
+                    <span class="tool-tag tt-free">Free</span>
+                </a>
+                <a href="https://netlify.com" target="_blank" class="tool-card">
+                    <p class="tool-name">Netlify</p>
+                    <p class="tool-desc">Drag and drop your project folder and it's live instantly. Super simple.</p>
+                    <span class="tool-tag tt-free">Free</span>
+                </a>
+                <a href="https://pages.github.com" target="_blank" class="tool-card">
+                    <p class="tool-name">GitHub Pages</p>
+                    <p class="tool-desc">Free hosting directly from your GitHub repo. Perfect for portfolios and
+                        projects.</p>
+                    <span class="tool-tag tt-free">Free</span>
+                </a>
+            </div>
+
+            <br><br>
+            <p class="sec-label" style="margin-bottom:12px;">Free APIs</p>
+            <div class="tools-grid">
+                <a href="https://aistudio.google.com/app/apikey" target="_blank" class="tool-card">
+                    <p class="tool-name">Gemini API</p>
+                    <p class="tool-desc">Add AI to your project for free. Very generous free tier. Great for chatbots
+                        and AI features.</p>
+                    <span class="tool-tag tt-free">Free tier</span>
+                </a>
+                <a href="https://openweathermap.org/api" target="_blank" class="tool-card">
+                    <p class="tool-name">OpenWeather API</p>
+                    <p class="tool-desc">Real weather data for any city. Free plan gives 1000 calls/day — more than
+                        enough.</p>
+                    <span class="tool-tag tt-free">Free tier</span>
+                </a>
+                <a href="https://newsapi.org" target="_blank" class="tool-card">
+                    <p class="tool-name">NewsAPI</p>
+                    <p class="tool-desc">Latest news headlines from any topic or country. Great for building news apps.
+                    </p>
+                    <span class="tool-tag tt-free">Free tier</span>
+                </a>
+            </div>
+
+            <br><br>
+            <p class="sec-label" style="margin-bottom:12px;">Design tools</p>
+            <div class="tools-grid">
+                <a href="https://figma.com" target="_blank" class="tool-card">
+                    <p class="tool-name">Figma</p>
+                    <p class="tool-desc">Design your website before building it. Free plan is very generous for
+                        students.</p>
+                    <span class="tool-tag tt-freemium">Freemium</span>
+                </a>
+                <a href="https://coolors.co" target="_blank" class="tool-card">
+                    <p class="tool-name">Coolors</p>
+                    <p class="tool-desc">Generate beautiful color palettes in seconds. Press spacebar and keep
+                        generating.</p>
+                    <span class="tool-tag tt-free">Free</span>
+                </a>
+                <a href="https://fonts.google.com" target="_blank" class="tool-card">
+                    <p class="tool-name">Google Fonts</p>
+                    <p class="tool-desc">1000+ free fonts for your website. Syne, DM Sans, Inter — all free to use.</p>
+                    <span class="tool-tag tt-free">Free</span>
+                </a>
+            </div>
+
+            <br><br>
+            <p class="sec-label" style="margin-bottom:12px;">Learn more</p>
+            <div class="tools-grid">
+                <a href="https://developer.mozilla.org" target="_blank" class="tool-card">
+                    <p class="tool-name">MDN Web Docs</p>
+                    <p class="tool-desc">The bible of web development. Every HTML, CSS, JS question answered here.</p>
+                    <span class="tool-tag tt-free">Free</span>
+                </a>
+                <a href="https://freecodecamp.org" target="_blank" class="tool-card">
+                    <p class="tool-name">freeCodeCamp</p>
+                    <p class="tool-desc">Free coding curriculum from zero to full stack. Certifications included.</p>
+                    <span class="tool-tag tt-free">Free</span>
+                </a>
+                <a href="https://theodinproject.com" target="_blank" class="tool-card">
+                    <p class="tool-name">The Odin Project</p>
+                    <p class="tool-desc">Project-based web dev curriculum. Build real things while learning. Completely
+                        free.</p>
+                    <span class="tool-tag tt-free">Free</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">virinchi<span>.dev</span></div>
+        <div>Built for builders. Free forever.</div>
+        <a href="https://instagram.com/virinchi_valmiki" target="_blank"
+            style="color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;"
+            onmouseover="this.style.color='#c8f135'" onmouseout="this.style.color='var(--muted)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+            @virinchi_valmiki
+        </a>
+        <div>© 2025 virinchi.dev</div>
+    </footer>
+
+    <script>
+        function toggleCard(id) {
+            const card = document.getElementById('card-' + id)
+            card.classList.toggle('open')
+        }
+
+        const reveals = document.querySelectorAll('.reveal')
+        const ro = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); ro.unobserve(e.target) } })
+        }, { threshold: 0.08 })
+        reveals.forEach(r => ro.observe(r))
+        const cursor = document.getElementById('cursor')
+        const ring = document.getElementById('cursorRing')
+        let mx = 0, my = 0, rx = 0, ry = 0
+
+        document.addEventListener('mousemove', e => {
+            mx = e.clientX; my = e.clientY
+            cursor.style.left = mx - 5 + 'px'
+            cursor.style.top = my - 5 + 'px'
+        })
+
+        function animRing() {
+            rx += (mx - rx) * 0.12
+            ry += (my - ry) * 0.12
+            ring.style.left = rx - 17 + 'px'
+            ring.style.top = ry - 17 + 'px'
+            requestAnimationFrame(animRing)
+        }
+        animRing()
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2.5)')
+            el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)')
+        })
+    </script>
+</body>
+
+</html>
