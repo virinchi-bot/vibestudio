@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/topic/what-is-vibecoding",      "destination": "/topic.html?id=1" },
+    { "source": "/topic/your-first-webpage",       "destination": "/topic.html?id=2" },
+    { "source": "/topic/prompting-for-code",       "destination": "/topic.html?id=3" },
+    { "source": "/topic/javascript-basics-fast",   "destination": "/topic.html?id=4" },
+    { "source": "/topic/apis-talk-to-the-web",     "destination": "/topic.html?id=5" },
+    { "source": "/topic/deploy-and-share-live",    "destination": "/topic.html?id=6" }
+  ]
+}

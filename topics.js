@@ -298,3 +298,17 @@ After deploying:
         ]
     }
 ]
+
+// Attach slug + clean URL to each topic (single source of truth)
+const TOPIC_SLUGS = {
+    1: 'what-is-vibecoding',
+    2: 'your-first-webpage',
+    3: 'prompting-for-code',
+    4: 'javascript-basics-fast',
+    5: 'apis-talk-to-the-web',
+    6: 'deploy-and-share-live'
+}
+topics.forEach(t => {
+    t.slug = TOPIC_SLUGS[t.id]
+    t.url  = '/topic/' + t.slug
+})
