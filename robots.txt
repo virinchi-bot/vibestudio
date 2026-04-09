@@ -1,0 +1,10 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Block unnecessary files
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://vibestudio-alpha.vercel.app/sitemap.xml
