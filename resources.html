@@ -1052,6 +1052,10 @@
             el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2.5)')
             el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)')
         })
+
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open')
+        }
     </script>
 </body>
 
